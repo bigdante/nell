@@ -1,0 +1,86 @@
+[
+  {
+    "head_entity": "Hugh Newall",
+    "relation": "employer",
+    "tail_entity": "University of Cambridge",
+    "evidences": [
+      {
+        "text": "Hugh Newall returned to Cambridge when J.J. Thomson, the Nobel prizewinning physicist, asked him to be his assistant.",
+        "extractor": "GLM-2B/P-tuning",
+        "confidence": 0.9,
+        "ts": "2021-12-04 00:40:48.553"
+      },
+      {
+        "text": "Hugh Frank Newall, FRS FRAS (21 June 1857 – 22 February 1944) was a British astrophysicist. He was Professor of Astrophysics (1909) at Cambridge.",
+        "extractor": "Prompt",
+        "confidence": 0.8,
+        "ts": "2021-12-04 00:46:48.553"
+      }
+    ]
+  },
+  {
+    "head_entity": "Charlotte Eagles",
+    "relation": "headquarters location",
+    "tail_entity": "Charlotte",
+    "evidences": [
+      {
+        "text": "The Charlotte Eagles are an American professional soccer team based in Charlotte, North Carolina, United States.",
+        "extractor": "",
+        "confidence": 0.8,
+        "ts": "2021-12-04 00:46:49.553"
+      }
+    ]
+  },
+  {
+    "head_entity": "Leodes",
+    "relation": "killed by",
+    "tail_entity": "Odysseus",
+    "evidences": [
+      {
+        "text": "He was the last person whom Odysseus killed in his homecoming rampage, decapitated while pleading for his life: Leodes rushed in and caught the knees of Odysseus, and spoke to him in winged words and supplication: 'I am at your knees, Odysseus.",
+        "extractor": "Prompt",
+        "confidence": 0.5,
+        "ts": "2021-12-04 00:46:50.553"
+      }
+    ]
+  },
+  {
+    "head_entity": "Juan Blas de Castro",
+    "relation": "employer",
+    "tail_entity": "Philip III of Spain",
+    "evidences": [
+      {
+        "text": "In 1597 Castro became a court musician to King Philip III of Spain, and, from June 15, 1599 an usher.",
+        "extractor": "Prompt",
+        "confidence": 0.6,
+        "ts": "2021-12-04 00:46:51.553"
+      }
+    ]
+  },
+  {
+    "head_entity": "Woolsack",
+    "relation": "location",
+    "tail_entity": "House of Lords",
+    "evidences": [
+      {
+        "text": "The Woolsack is the seat of the Lord Speaker in the House of Lords, the Upper House of the Parliament of the United Kingdom.",
+        "extractor": "GLM-10B/P-tuning",
+        "confidence": 0.7,
+        "ts": "2021-12-04 00:46:52.553"
+      }
+    ]
+  },
+  {
+    "head_entity": "Georg Caspar Wecker",
+    "relation": "residence",
+    "tail_entity": "Nuremberg",
+    "evidences": [
+      {
+        "text": "Wecker was born and spent all Georg Caspar Wecker's life in Nuremberg.",
+        "extractor": "GLM-2B/P-tuning",
+        "confidence": 0,
+        "ts": "2021-12-04 00:46:53.553"
+      }
+    ]
+  }
+]
