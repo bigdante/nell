@@ -63,8 +63,11 @@ def show_pps():
     page_ids = []
     for r in s_r:
         page_ids.append(r['_id'])
+    # 记录最终的返回结果
     result_triples = {}
+    # 记录page_id和对应的所有sentence的ID
     page_sentence = {}
+    id_sentence = {}
     for index, page_id in enumerate(page_ids):
         page = WikipediaPage.objects.get(id=ObjectId(page_id))
         # get sentences ids of this page
@@ -73,7 +76,8 @@ def show_pps():
             for sentence in paragrah.sentences:
                 # print(index, " ",sentence.text)
                 sentences_ids.append(sentence.id)
-            # 代表一个段落后到换行
+                id_sentence[sentence.id] = sentence.text
+            # 代表一个段落后的换行
             sentences_ids.append("enter")
         page_sentence[page.id]=sentences_ids
     # print(page_sentence)
@@ -82,16 +86,25 @@ def show_pps():
         for index, id in enumerate(sentences_id):
             if id == "enter":
                 if result_list:
-                    r = result_list[-1][0]['evidences'][0]['text']
-                    if not r.endswith("\n"):
-                        result_list[-1][0]['evidences'][0]['text'] += '\n'
+                    if type(result_list[-1])== str:
+                        r = result_list[-1]
+                        if not r.endswith("\n"):
+                            result_list[-1] += '\n'
+                    else:
+                        r = result_list[-1][0]['evidences'][0]['text']
+                        if not r.endswith("\n"):
+                            result_list[-1][0]['evidences'][0]['text'] += '\n'
                 continue
             result = []
             for triple in TripleFact.objects(evidence=id):
                 # print(triple.evidence.text)
                 result.append(precess_db_data(triple))
+            # 找到id对应的三元组将结果放进去，如果result为空，则说明没找到，那么就直接将句子返回
             if result:
                 result_list.append(result)
+            else:
+                result_list.append(id_sentence[id])
+        print(result_list)
         if result_list:
             result_triples[str(page_id)]=result_list
         else:
@@ -101,7 +114,7 @@ def show_pps():
 
     with open('result_triples.json', 'w') as f:
         # f.write(str(result_triples))
-        json.dump(result_triples,f)
+        json.dump(result_triples,f,indent=4)
 
         '''
             result_triples 格式：
