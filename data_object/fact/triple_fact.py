@@ -20,6 +20,7 @@ class TripleFact(BaseFact):
     evidenceText = StringField()
 
     verification = DictField()
+    
     is_from_abstract = StringField(required=True)
     headWikidataEntity = StringField(required=True)
     headWikipediaEntity = StringField(required=True)

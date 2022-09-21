@@ -10,7 +10,7 @@ from flask_cors import cross_origin, CORS
 from data_object import *
 import random
 import datetime
-
+import uuid
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 CORS(app, supports_credentials=True)
@@ -47,24 +47,15 @@ def show_pps():
         query_name = eval(request.data)['query_name']
     else:
         return " 'it's not a POST operation! \n"
-
-    # assume that we get page_ids as followed
-    # page_ids = [
-    #     "624d2c91c20df149ac58742b",
-    #     "624d2c91c20df149ac58743f",
-    #     "624d2c91c20df149ac587451",
-    #     "624d2c92c20df149ac587480",
-    #     "624d2c92c20df149ac5874c1",
-    #     "624d2c92c20df149ac5874cd",
-    #     "624d2c92c20df149ac5874f0"
-    # ]
-    # query_name = "Abraham Lincoln"
     s_r = call_es(query_name)
-    page_ids = []
-    for r in s_r:
-        page_ids.append(r['_id'])
+    page_ids = [r['_id'] for r in s_r]
+    # for r in s_r:
+    #     page_ids.append(r['_id'])
+    # 记录最终的返回结果
     result_triples = {}
+    # 记录page_id和对应的所有sentence的ID
     page_sentence = {}
+    id_sentence = {}
     for index, page_id in enumerate(page_ids):
         page = WikipediaPage.objects.get(id=ObjectId(page_id))
         # get sentences ids of this page
@@ -73,7 +64,8 @@ def show_pps():
             for sentence in paragrah.sentences:
                 # print(index, " ",sentence.text)
                 sentences_ids.append(sentence.id)
-            # 代表一个段落后到换行
+                id_sentence[sentence.id] = sentence.text
+            # 代表一个段落后的换行
             sentences_ids.append("enter")
         page_sentence[page.id]=sentences_ids
     # print(page_sentence)
@@ -81,17 +73,43 @@ def show_pps():
         result_list = []
         for index, id in enumerate(sentences_id):
             if id == "enter":
-                if result_list:
-                    r = result_list[-1][0]['evidences'][0]['text']
-                    if not r.endswith("\n"):
-                        result_list[-1][0]['evidences'][0]['text'] += '\n'
+                # if result_list:
+                r = result_list[-1][0]['evidences'][0]['text']
+                if not r.endswith("\n"):
+                    result = {
+                        "_id": str(uuid.uuid4()),
+                        "evidences":[{
+                            "text":"\n"
+                        }]
+                    }
+                # result_list.append(id_sentence[id])
+                result_list.append([result])
+                    # if type(result_list[-1])== str:
+                    #     r = result_list[-1]
+                    #     if not r.endswith("\n"):
+                    #         result_list[-1] += '\n'
+                    # else:
+                    #     r = result_list[-1][0]['evidences'][0]['text']
+                    #     if not r.endswith("\n"):
+                    #         result_list[-1][0]['evidences'][0]['text'] += '\n'
                 continue
             result = []
             for triple in TripleFact.objects(evidence=id):
                 # print(triple.evidence.text)
                 result.append(precess_db_data(triple))
+            # 找到id对应的三元组将结果放进去，如果result为空，则说明没找到，那么就直接将句子返回
             if result:
                 result_list.append(result)
+            else:
+                result = {
+                    "_id": str(uuid.uuid4()),
+                    "evidences":[{
+                        "text":id_sentence[id]
+                    }]
+                }
+                # result_list.append(id_sentence[id])
+                result_list.append([result])
+        # print(result_list)
         if result_list:
             result_triples[str(page_id)]=result_list
         else:
@@ -101,7 +119,7 @@ def show_pps():
 
     with open('result_triples.json', 'w') as f:
         # f.write(str(result_triples))
-        json.dump(result_triples,f)
+        json.dump(result_triples,f,indent=4)
 
         '''
             result_triples 格式：
@@ -112,7 +130,7 @@ def show_pps():
                 所以在做句子拼接成段落时候，遍历每个list，第一个句子要作为标题，之后如果遇到了enter就表示要换行，直接接个换行符即可。
 
         '''
-
+    
     return output_process(result_triples)
 
 
@@ -124,8 +142,6 @@ class JSONEncoder(json.JSONEncoder):
         if isinstance(o, datetime):
             return str(o)
         return json.JSONEncoder.default(self, o)
-
-
 
 
 e = JSONEncoder()
