@@ -55,7 +55,6 @@ def call_es(text, index="page"):
         page_ids = [r['_id'] for r in s_r]
         result_triples = get_pages(page_ids)
     elif index == 'entity':
-        print("here asshole")
         result_triples = []
         pass
     return result_triples
@@ -100,8 +99,9 @@ def get_pages(page_ids):
             for sentence in paragrah.sentences:
                 sentences_ids.append(sentence.id)
                 id_sentence[sentence.id] = sentence.text
-            # 代表一个段落后的换行
-            sentences_ids.append("enter")
+            # 代表一个段落后的换行，连续换行的话，就只保留一个
+            if not sentences_ids[-1]=='enter':
+                sentences_ids.append("enter")
         page_sentence[page.id] = sentences_ids
 
     for page_id, sentences_id in page_sentence.items():
@@ -112,21 +112,19 @@ def get_pages(page_ids):
             if id == "enter":
                 r = result_list[-1][0]['evidences'][0]['text']
                 if not r.endswith("\n"):
-                    result = [{
-                        "_id": str(uuid.uuid4()),
-                        "evidences": [{"text": "\n"}]
-                    }]
+                    result_list[-1][0]['evidences'][0]['text'] += '\n'
             else:
                 result = []
                 for triple in TripleFact.objects(evidence=id):
                     result.append(precess_db_data(triple))
                 # 如果对应的id在triple表中能找到，则result不为空，加入result_list，否则将句子直接放入
-                if not result:
+                # 判断下是否文本内容就是个"\n""
+                if not result and not id_sentence[id]=="\n":
                     result = [{
-                        "_id": str(uuid.uuid4()),
+                        "_id": str(id),
                         "evidences": [{"text": id_sentence[id]}]
                     }]
-            result_list.append(result)
+                    result_list.append(result)
         result_triples[str(page_id)] = result_list
         save_result_json(result_triples)
     return result_triples
