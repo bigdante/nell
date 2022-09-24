@@ -8,7 +8,8 @@ from bson import ObjectId
 import uuid
 from requests import post
 from flask import jsonify
-
+from mongoengine.queryset.visitor import Q
+from tqdm import tqdm
 
 def precess_db_data(db_document):
     '''
@@ -55,8 +56,11 @@ def call_es(text, index="page"):
         page_ids = [r['_id'] for r in s_r]
         result_triples = get_pages(page_ids)
     elif index == 'entity':
-        result_triples = []
-        pass
+        entity_names = [r['_source']['text'] for r in s_r]
+        entity_ids = [r['_id'] for r in s_r]
+        print(s_r)
+        result_triples=get_entity_net(entity_ids,entity_names)
+
     return result_triples
 
 
@@ -128,3 +132,42 @@ def get_pages(page_ids):
         result_triples[str(page_id)] = result_list
         save_result_json(result_triples)
     return result_triples
+
+
+def get_entity_net(entity_ids,entity_names):
+    '''
+        根据关键词，获得head和tail为关键词的所有的信息
+         result = {
+            word1:[{"head":x,"tail":b,"relationLabel":c},{},...],
+            word2:[{},{},...]
+        }
+    '''
+    result = {}
+    for id,entity in tqdm(zip(entity_ids,entity_names)):
+        nodes = []
+        edeges= []
+        # for triple in TripleFact.objects(Q(head=entity) | Q(tail=entity)):
+        for triple in TripleFact.objects(Q(headWikipediaEntity=ObjectId(id))):
+            nodes.extend([
+                {
+                    "id":triple.head,
+                    "label":triple.head
+                },
+                {
+                    "id":triple.tail,
+                    "label":triple.tail
+                },]
+            )
+            edeges.append(
+                {
+                    "source":triple.head,
+                    "target":triple.tail,
+                    "label":triple.relationLabel,
+                }
+            )
+        result[entity]={
+            "nodes":nodes,
+            "edges":edeges
+        }
+    print("search done....")
+    return result

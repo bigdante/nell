@@ -15,6 +15,7 @@ app.config['JSON_AS_ASCII'] = False
 CORS(app, supports_credentials=True)
 
 
+
 @app.route('/latest', methods=['GET'])
 def latest():
     '''
@@ -44,13 +45,14 @@ def dashboard():
 @app.route('/pps', methods=['GET', 'POST'])
 def show_pps():
     if request.method == 'POST':
-        query_name = eval(request.data)['query_name']
-        index = eval(request.data)['index']
+        message = eval(request.data)
+        index = "page"
+        query_name = message['query_name']
+        index = message['index'] if "index" in message.keys() else "page"
     else:
         return " 'it's not a POST operation! \n"
-
     results = call_es(query_name,index=index)
-    
+
     return output_process(results)
 
 
