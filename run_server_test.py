@@ -46,7 +46,7 @@ def dashboard():
 def show_pps():
     if request.method == 'POST':
         message = eval(request.data)
-        index = "page"
+        # index = "page"
         query_name = message['query_name']
         index = message['index'] if "index" in message.keys() else "page"
     else:
