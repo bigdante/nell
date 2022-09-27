@@ -10,18 +10,20 @@ from requests import post
 from flask import jsonify
 from mongoengine.queryset.visitor import Q
 from tqdm import tqdm
-
+import re
 def precess_db_data(db_document,need_span=True):
     '''
         formate the result for browser 
     '''
     output = {}
     output['_id'] = str(db_document.id)
-    output['head_entity'] = db_document.head
     output["head_linked_entity"] = "????"
     if need_span:
         indexs = np.asarray(db_document.headSpan)-BaseSentence.objects.get(id=db_document.evidence.id).charSpan[0]
         output['headSpan'] = indexs.tolist()
+        output['head_entity'] = db_document.head
+    else:
+        output['head_entity'] = re.sub(r"[^a-zA-Z.!?]+", r" ", db_document.head.lower())
     output['relation'] = db_document.relationLabel
     output['tail_entity'] = db_document.tail
     output['evidences'] = [{
@@ -31,6 +33,7 @@ def precess_db_data(db_document,need_span=True):
         "filtered": True,
         "ts": str(datetime.date.today())
     }]
+
 
     return output
 
@@ -86,6 +89,15 @@ def save_result_json(result_triples, path='./data/result_triples.json'):
     with open(path, 'w') as f:
         json.dump(result_triples, f, indent=4)
 
+
+def get_page_entity(query_name):
+    result_all = {}
+    result_all["page"] = call_es(query_name,"page")
+    result_all["entity"] = call_es(query_name,"entity")
+    save_result_json(result_all,"./data/page_entity.json")
+    return result_all
+
+
 def get_pages(page_ids):
     '''
         get the pages by page_ids
@@ -115,22 +127,26 @@ def get_pages(page_ids):
         for index, id in enumerate(sentences_id):
             # 遇到id=enter，代表需要回车
             if id == "enter":
-                if result_list:
-                    r = result_list[-1][0]['evidences'][0]['text']
-                    if not r.endswith("\n"):
-                        result_list[-1][0]['evidences'][0]['text'] += '\n'
+                r = result_list[-1][0]['evidences'][0]['text']
+                if not r.endswith("\n"):
+                    result_list[-1][0]['evidences'][0]['text'] += '\n'
             else:
                 result = []
                 for triple in TripleFact.objects(evidence=id):
                     result.append(precess_db_data(triple))
                 # 如果对应的id在triple表中能找到，则result不为空，加入result_list，否则将句子直接放入
                 # 判断下是否文本内容就是个"\n""
-                if not result and not id_sentence[id]=="\n":
-                    result = [{
-                        "_id": str(id),
-                        "evidences": [{"text": id_sentence[id]}]
-                    }]
-                    result_list.append(result)
+                if not result:
+                    if not id_sentence[id]=="\n":
+                        result = [{
+                            "_id": str(id),
+                            "evidences": [{"text": id_sentence[id]}]
+                        }]
+                    else:
+                        continue
+                # if result:
+                result_list.append(result)
+                
         result_triples[str(page_id)] = result_list
     print("search page done....consume time:{:.2f}s".format(time.time()-start))
     save_result_json(result_triples,"./data/page.json")
@@ -151,8 +167,11 @@ def get_entity_net(entity_ids,entity_names):
         nodes = [{"id":entity,"label":entity,"root":True}]
         edeges= []
         tables=[]
+        # for triple in TripleFact.objects(Q(head=entity)):
         # for triple in TripleFact.objects(Q(head=entity) | Q(tail=entity)):
         for triple in TripleFact.objects(Q(headWikipediaEntity=ObjectId(id))):
+            # if not triple.head.lower()==entity.lower():
+            #     continue
             head = {
                     "id":triple.head,
                     "label":triple.head
@@ -165,7 +184,6 @@ def get_entity_net(entity_ids,entity_names):
                     "source":triple.head,
                     "target":triple.tail,
                     "label":triple.relationLabel,
-                    # "id":str(triple.id)
             }
             for_root = {
                     "source":entity,
@@ -177,15 +195,15 @@ def get_entity_net(entity_ids,entity_names):
                 nodes.append(tail)
             if relation not in edeges:
                 edeges.append(relation)
-            if for_root not in edeges and for_root["source"] != for_root["target"]:
+            if for_root not in edeges and entity != for_root["target"]:
                 edeges.append(for_root)
-            tables.append(precess_db_data(triple))
-            # tables.append(triple)
-        result[entity]={
-            "nodes":nodes,
-            "edges":edeges,
-            "tables":tables
-        }
+            tables.append(precess_db_data(triple,False))
+        if nodes and edeges:    
+            result[entity]={
+                "nodes":nodes,
+                "edges":edeges,
+                "tables":tables
+            }
     save_result_json(result,"./data/search.json")
     print("search entity done....consume time:{:.2f}s".format(time.time()-start))
 

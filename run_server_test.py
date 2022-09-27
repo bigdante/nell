@@ -2,7 +2,7 @@ from flask import Flask, abort, request
 from datetime import datetime
 
 from mongoengine.queryset.visitor import Q
-import json
+import json,time
 from requests import post
 from tqdm import tqdm
 from flask_cors import cross_origin, CORS
@@ -22,12 +22,14 @@ def latest():
         return the latest triples extracted
     '''
     result = []
-    for index, triple in enumerate(TripleFact.objects()):
+    # for index, triple in enumerate(TripleFact.objects()):
+    start = time.time()
+    for index, triple in enumerate(TripleFact.objects[:100]):
         result.append(precess_db_data(triple))
         # return only 500 items
-        if index >= 500:
+        if index >= 50:
             break
-        
+    print("latest search done, consume time {:.2f}s".format(time.time()-start)) 
     return output_process(result[:50])
 
 
@@ -46,13 +48,13 @@ def dashboard():
 def show_pps():
     if request.method == 'POST':
         message = eval(request.data)
-        # index = "page"
         query_name = message['query_name']
         index = message['index'] if "index" in message.keys() else "page"
     else:
         return " 'it's not a POST operation! \n"
+    print("search for",query_name)
     results = call_es(query_name,index=index)
-
+    # result = get_page_entity(query_name)
     return output_process(results)
 
 

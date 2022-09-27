@@ -44,6 +44,28 @@
         ],
         [
             {
+                "_id": "62a0e91c03c4502cbec88c03",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    64,
+                    80
+                ],
+                "head_entity": "Washington, D.C.",
+                "relation": "located in the administrative territorial entity",
+                "tail_entity": "United States",
+                "evidences": [
+                    {
+                        "text": "Washington Highlands is a residential neighborhood in Southeast Washington, D.C., in the United States.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.23058669603834359,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            }
+        ],
+        [
+            {
                 "_id": "624c7e69c20df149ac096ebb",
                 "evidences": [
                     {
@@ -1004,10 +1026,54 @@
         ],
         [
             {
+                "_id": "62a0ea4a03c4502cbec88c64",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    25,
+                    38
+                ],
+                "head_entity": "David Catania",
+                "relation": "member of political party",
+                "tail_entity": "Independent",
+                "evidences": [
+                    {
+                        "text": "D.C. City Council member David Catania, an Independent candidate for mayor, accused Bowser of improperly intervening in the situation and engaging in ethically questionable conduct.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.7838960946151661,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            }
+        ],
+        [
+            {
                 "_id": "624c7e6bc20df149ac096f2e",
                 "evidences": [
                     {
                         "text": "Bowser dismissed Catania's criticism, and has alleged that problems at Park Southern Apartments are not as bad as the tenants and D.C. Housing Authority allege.\n"
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "_id": "62a0ea4f03c4502cbec88c68",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    27,
+                    31
+                ],
+                "head_entity": "D.C.",
+                "relation": "located in the administrative territorial entity",
+                "tail_entity": "United States",
+                "evidences": [
+                    {
+                        "text": "On July 16, 2014, both the D.C. city's attorney general and the United States attorney for the District of Columbia announced civil and criminal investigations into PSNC's administration of the Park Southern Apartments.\n",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.2743166724687641,
+                        "filtered": true,
+                        "ts": "2022-09-27"
                     }
                 ]
             }
@@ -1354,6 +1420,28 @@
         ],
         [
             {
+                "_id": "62a0eab703c4502cbec88c7f",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    77,
+                    94
+                ],
+                "head_entity": "Wilhelmina Rolark",
+                "relation": "residence",
+                "tail_entity": "Washington Highlands",
+                "evidences": [
+                    {
+                        "text": "Former notable residents of Washington Highlands include the late Calvin and Wilhelmina Rolark, co-founders of the United Black Fund.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.2903622535473235,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            }
+        ],
+        [
+            {
                 "_id": "624c7e6bc20df149ac096f5c",
                 "evidences": [
                     {
@@ -1374,6 +1462,28 @@
         ]
     ],
     "624c25fbc20df149ace14382": [
+        [
+            {
+                "_id": "629f2fabf843b5b290630b2e",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    0,
+                    35
+                ],
+                "head_entity": "Hotel Washington (Washington, D.C.)",
+                "relation": "location",
+                "tail_entity": "Washington, D.C.",
+                "evidences": [
+                    {
+                        "text": "Hotel Washington (Washington, D.C.)\n",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.5527091084629007,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            }
+        ],
         [
             {
                 "_id": "624c25fbc20df149ace14371",
@@ -1406,10 +1516,134 @@
         ],
         [
             {
+                "_id": "629f2fcbf843b5b290630b3d",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    148,
+                    164
+                ],
+                "head_entity": "Washington, D.C.",
+                "relation": "architect",
+                "tail_entity": "Carr\u00e8re and Hastings",
+                "evidences": [
+                    {
+                        "text": "Designed by the architectural firm of Carr\u00e8re and Hastings, the ten-story, Beaux-Arts hotel is the only commercial building designed by the firm in Washington, D.C. Construction of the Hotel Washington was completed in 1918.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.49204094573508816,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "629f2fcff843b5b290630b42",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    181,
+                    201
+                ],
+                "head_entity": "the Hotel Washington",
+                "relation": "architect",
+                "tail_entity": "Carr\u00e8re and Hastings",
+                "evidences": [
+                    {
+                        "text": "Designed by the architectural firm of Carr\u00e8re and Hastings, the ten-story, Beaux-Arts hotel is the only commercial building designed by the firm in Washington, D.C. Construction of the Hotel Washington was completed in 1918.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.48769741805010036,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "629f2fcff843b5b290630b41",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    181,
+                    201
+                ],
+                "head_entity": "the Hotel Washington",
+                "relation": "location",
+                "tail_entity": "Washington, D.C.",
+                "evidences": [
+                    {
+                        "text": "Designed by the architectural firm of Carr\u00e8re and Hastings, the ten-story, Beaux-Arts hotel is the only commercial building designed by the firm in Washington, D.C. Construction of the Hotel Washington was completed in 1918.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.439849551399322,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "6318d7ce4fd65662f8c2c723",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    -254,
+                    -219
+                ],
+                "head_entity": "Hotel Washington (Washington, D.C.)",
+                "relation": "location",
+                "tail_entity": "Washington, D.C.",
+                "evidences": [
+                    {
+                        "text": "Designed by the architectural firm of Carr\u00e8re and Hastings, the ten-story, Beaux-Arts hotel is the only commercial building designed by the firm in Washington, D.C. Construction of the Hotel Washington was completed in 1918.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.15065484185353195,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "6318d7ce4fd65662f8c2c724",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    -254,
+                    -219
+                ],
+                "head_entity": "Hotel Washington (Washington, D.C.)",
+                "relation": "architect",
+                "tail_entity": "Carr\u00e8re and Hastings",
+                "evidences": [
+                    {
+                        "text": "Designed by the architectural firm of Carr\u00e8re and Hastings, the ten-story, Beaux-Arts hotel is the only commercial building designed by the firm in Washington, D.C. Construction of the Hotel Washington was completed in 1918.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.7567663897433692,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            }
+        ],
+        [
+            {
                 "_id": "624c25fbc20df149ace14376",
                 "evidences": [
                     {
                         "text": "The facade features cream colored sgraffito decoration on a reddish-brown ground.\n"
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "_id": "629f2ff1f843b5b290630b4e",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    234,
+                    276
+                ],
+                "head_entity": "Pennsylvania Avenue National Historic Site",
+                "relation": "named after",
+                "tail_entity": "Pennsylvania Avenue",
+                "evidences": [
+                    {
+                        "text": "The Hotel Washington was listed on the National Register of Historic Places (NRHP) in 1995; in addition, the building is a contributing property to the Fifteenth Street Financial Historic District, listed on the NRHP in 2006, and the Pennsylvania Avenue National Historic Site.\n",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.25225407493473484,
+                        "filtered": true,
+                        "ts": "2022-09-27"
                     }
                 ]
             }
@@ -1440,6 +1674,28 @@
                 "evidences": [
                     {
                         "text": "Its roof terrace figured in the movies \"The Godfather Part II\" and \"No Way Out\"."
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "_id": "629f3039f843b5b290630b54",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    17,
+                    34
+                ],
+                "head_entity": "John Nance Garner",
+                "relation": "residence",
+                "tail_entity": "Frank Murphy",
+                "evidences": [
+                    {
+                        "text": "Frank Murphy and John Nance Garner lived there.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.020184215361968127,
+                        "filtered": true,
+                        "ts": "2022-09-27"
                     }
                 ]
             }
@@ -1920,6 +2176,88 @@
         ],
         [
             {
+                "_id": "629be6c8211f53f32dc4e723",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    155,
+                    180
+                ],
+                "head_entity": "Franklin County, Missouri",
+                "relation": "located in the administrative territorial entity",
+                "tail_entity": "Missouri",
+                "evidences": [
+                    {
+                        "text": "The Washington Bridge is a currently demolished cantilever truss bridge over the Missouri River at Washington, Missouri over which Route 47 passed between Franklin County, Missouri and Warren County, Missouri.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.3882368414410745,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "629be6cb211f53f32dc4e726",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    185,
+                    208
+                ],
+                "head_entity": "Warren County, Missouri",
+                "relation": "located in the administrative territorial entity",
+                "tail_entity": "Missouri",
+                "evidences": [
+                    {
+                        "text": "The Washington Bridge is a currently demolished cantilever truss bridge over the Missouri River at Washington, Missouri over which Route 47 passed between Franklin County, Missouri and Warren County, Missouri.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.03255883109581881,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "62ace466e5a726b307139b80",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    155,
+                    180
+                ],
+                "head_entity": "Franklin County, Missouri",
+                "relation": "located in the administrative territorial entity",
+                "tail_entity": "Missouri",
+                "evidences": [
+                    {
+                        "text": "The Washington Bridge is a currently demolished cantilever truss bridge over the Missouri River at Washington, Missouri over which Route 47 passed between Franklin County, Missouri and Warren County, Missouri.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.14805081859193092,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "62ace46be5a726b307139b82",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    185,
+                    208
+                ],
+                "head_entity": "Warren County, Missouri",
+                "relation": "located in the administrative territorial entity",
+                "tail_entity": "Missouri",
+                "evidences": [
+                    {
+                        "text": "The Washington Bridge is a currently demolished cantilever truss bridge over the Missouri River at Washington, Missouri over which Route 47 passed between Franklin County, Missouri and Warren County, Missouri.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.006202041542918368,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            }
+        ],
+        [
+            {
                 "_id": "6261208ac20df149ac85dcaa",
                 "evidences": [
                     {
@@ -2364,6 +2702,48 @@
         ],
         [
             {
+                "_id": "6313e4b20925d515de343a1c",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    -37,
+                    -2
+                ],
+                "head_entity": "Washington High School (Washington)",
+                "relation": "country",
+                "tail_entity": "United States",
+                "evidences": [
+                    {
+                        "text": "Washington High School in Tacoma, Washington, United States.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.0451475498835453,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "6313e4b20925d515de343a1f",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    -37,
+                    -2
+                ],
+                "head_entity": "Washington High School (Washington)",
+                "relation": "location",
+                "tail_entity": "Tacoma, Washington",
+                "evidences": [
+                    {
+                        "text": "Washington High School in Tacoma, Washington, United States.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.22269132033045824,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            }
+        ],
+        [
+            {
                 "_id": "6257ccdac20df149acbbe5b5",
                 "evidences": [
                     {
@@ -2436,6 +2816,48 @@
         ],
         [
             {
+                "_id": "628ba201331e742d242f7074",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    40,
+                    50
+                ],
+                "head_entity": "Washington",
+                "relation": "country",
+                "tail_entity": "United States",
+                "evidences": [
+                    {
+                        "text": "Cheney ( ) is a city in Spokane County, Washington, United States.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.5091990334795957,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "6305dac68510ea3b9ec259ff",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    -20,
+                    -2
+                ],
+                "head_entity": "Cheney, Washington",
+                "relation": "country",
+                "tail_entity": "United States",
+                "evidences": [
+                    {
+                        "text": "Cheney ( ) is a city in Spokane County, Washington, United States.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.21374379532714738,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            }
+        ],
+        [
+            {
                 "_id": "624a7af0c20df149ac1fc7cf",
                 "evidences": [
                     {
@@ -2476,10 +2898,74 @@
         ],
         [
             {
+                "_id": "628ba21c331e742d242f707b",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    0,
+                    18
+                ],
+                "head_entity": "The City of Cheney",
+                "relation": "located in the administrative territorial entity",
+                "tail_entity": "Spokane County",
+                "evidences": [
+                    {
+                        "text": "The City of Cheney is located in Spokane County and is home to 10,590 residents, according to the 2010 Census.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.7308930134844587,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            }
+        ],
+        [
+            {
                 "_id": "624a7af0c20df149ac1fc7d6",
                 "evidences": [
                     {
-                        "text": "Cheney is proud of its small town nature, which is enhanced by the diverse influence of Eastern Washington University, a public regional university with over 10,000 full-time students.\n"
+                        "text": "Cheney is proud of its small town nature, which is enhanced by the diverse influence of Eastern Washington University, a public regional university with over 10,000 full-time students."
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "_id": "628ba22b331e742d242f7080",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    4,
+                    20
+                ],
+                "head_entity": "Seattle Seahawks",
+                "relation": "league",
+                "tail_entity": "National Football League",
+                "evidences": [
+                    {
+                        "text": "The Seattle Seahawks of the National Football League have held the majority of their summer training camps at EWU, from 1976\u20131985, and again from 1997 through the 2006 training camp.\n",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.4922029965788536,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "628ba231331e742d242f7086",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    28,
+                    52
+                ],
+                "head_entity": "National Football League",
+                "relation": "participating team",
+                "tail_entity": "Seattle Seahawks",
+                "evidences": [
+                    {
+                        "text": "The Seattle Seahawks of the National Football League have held the majority of their summer training camps at EWU, from 1976\u20131985, and again from 1997 through the 2006 training camp.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.4712832034491822,
+                        "filtered": true,
+                        "ts": "2022-09-27"
                     }
                 ]
             }
@@ -2530,6 +3016,28 @@
                 "evidences": [
                     {
                         "text": "In the latter part of that decade, settlers attracted by plentiful water and timber and the promise of a railway line made their homes near a group of springs bubbling through a willow copse from the bank where the Burlington Northern depot now stands.\n"
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "_id": "628ba242331e742d242f7094",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    227,
+                    245
+                ],
+                "head_entity": "Cheney, Washington",
+                "relation": "named after",
+                "tail_entity": "Benjamin P. Cheney",
+                "evidences": [
+                    {
+                        "text": "The name of the community, originally Section Thirteen, became Willow Springs, then became Depot Springs, because of its ties to the railroad, then Billings, in honor of a president of the Northern Pacific Company, and finally Cheney, Washington in honor of Benjamin P. Cheney, a director of the Northern Pacific Railroad.\n",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.9631845609001265,
+                        "filtered": true,
+                        "ts": "2022-09-27"
                     }
                 ]
             }
@@ -3226,6 +3734,48 @@
         ],
         [
             {
+                "_id": "628ba32b331e742d242f70e2",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    0,
+                    8
+                ],
+                "head_entity": "Cheney's",
+                "relation": "located in the administrative territorial entity",
+                "tail_entity": "Spokane County",
+                "evidences": [
+                    {
+                        "text": "Cheney's downtown area is also the home of the Cheney Historical Museum which is dedicated to gathering, preserving, and sharing information and artifacts concerning the history of the Four Lakes, Marshall, Cheney, Tyler, and Amber districts of southwest Spokane County in eastern Washington.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.14890791767497857,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "628ba32d331e742d242f70e5",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    207,
+                    213
+                ],
+                "head_entity": "Cheney",
+                "relation": "located in the administrative territorial entity",
+                "tail_entity": "Spokane County",
+                "evidences": [
+                    {
+                        "text": "Cheney's downtown area is also the home of the Cheney Historical Museum which is dedicated to gathering, preserving, and sharing information and artifacts concerning the history of the Four Lakes, Marshall, Cheney, Tyler, and Amber districts of southwest Spokane County in eastern Washington.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.3756837912779709,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            }
+        ],
+        [
+            {
                 "_id": "624a7af1c20df149ac1fc83b",
                 "evidences": [
                     {
@@ -3300,6 +3850,28 @@
                 "evidences": [
                     {
                         "text": "The War Department chose Spokane for several reasons: better weather conditions, the location from the coast, and the Cascade Range providing a natural barrier against possible Japanese attack.\n"
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "_id": "628ba369331e742d242f70f9",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    37,
+                    60
+                ],
+                "head_entity": "United States Air Force",
+                "relation": "location",
+                "tail_entity": "Fairchild Air Force Base",
+                "evidences": [
+                    {
+                        "text": "Fairchild Air Force Base is also the United States Air Force's primary training facility for Survival, Evasion, Resistance and Escape Techniques (SERE).",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.10966836190392959,
+                        "filtered": true,
+                        "ts": "2022-09-27"
                     }
                 ]
             }
@@ -3696,6 +4268,28 @@
         ],
         [
             {
+                "_id": "628ba3aa331e742d242f7115",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    131,
+                    138
+                ],
+                "head_entity": "Safeway",
+                "relation": "industry",
+                "tail_entity": "supermarket",
+                "evidences": [
+                    {
+                        "text": "Over the years this area has seen the development of several new businesses and restaurants including a new shopping center with a Safeway supermarket, Pizza Hut, Starbucks coffee, and a credit union.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.2147141068631191,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            }
+        ],
+        [
+            {
                 "_id": "624a7af1c20df149ac1fc879",
                 "evidences": [
                     {
@@ -3870,6 +4464,28 @@
                 "evidences": [
                     {
                         "text": "Local farmers come to the market to help the community understand how food is grown and where it comes from.\n"
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "_id": "628ba3f4331e742d242f712f",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    208,
+                    216
+                ],
+                "head_entity": "Garfield",
+                "relation": "headquarters location",
+                "tail_entity": "Cheney",
+                "evidences": [
+                    {
+                        "text": "Cheney is home to the Eastern Regional Branch of the Washington State Archives, which provides archival and records management services to local government agencies throughout Adams, Asotin, Columbia, Ferry, Garfield, Lincoln, Pend Oreille, Spokane, Stevens, Walla Walla and Whitman counties in the state of Washington.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.6099247451767591,
+                        "filtered": true,
+                        "ts": "2022-09-27"
                     }
                 ]
             }
@@ -4459,7 +5075,49 @@
                 "_id": "624a7af3c20df149ac1fc8dc",
                 "evidences": [
                     {
-                        "text": "Cheney is located in Washington's 5th congressional district for representation in the United States Congress.\n"
+                        "text": "Cheney is located in Washington's 5th congressional district for representation in the United States Congress."
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "_id": "628ba4af331e742d242f7168",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    150,
+                    172
+                ],
+                "head_entity": "Cathy McMorris Rodgers",
+                "relation": "member of political party",
+                "tail_entity": "Republican",
+                "evidences": [
+                    {
+                        "text": "The 5th congressional district in Washington has a Cook Partisan Voting Index of R+7 and is represented in the House of Representatives by Republican Cathy McMorris Rodgers and in the Senate is represented by two Democrats, Patty Murray and Maria Cantwell.\n",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.9436517693934322,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "628ba49f331e742d242f7160",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    111,
+                    135
+                ],
+                "head_entity": "House of Representatives",
+                "relation": "applies to jurisdiction",
+                "tail_entity": "The 5th congressional district",
+                "evidences": [
+                    {
+                        "text": "The 5th congressional district in Washington has a Cook Partisan Voting Index of R+7 and is represented in the House of Representatives by Republican Cathy McMorris Rodgers and in the Senate is represented by two Democrats, Patty Murray and Maria Cantwell.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.1481667307564537,
+                        "filtered": true,
+                        "ts": "2022-09-27"
                     }
                 ]
             }
@@ -4708,6 +5366,90 @@
         ],
         [
             {
+                "_id": "630924ed8510ea3b9ec32808",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    -19,
+                    -2
+                ],
+                "head_entity": "Jascha Washington",
+                "relation": "country of citizenship",
+                "tail_entity": "American",
+                "evidences": [
+                    {
+                        "text": "Jascha Akili Washington (born June 21, 1989) is an American actor and songwriter.\n",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.20375048741187773,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "_id": "62a32845db22e8709734da53",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    23,
+                    47
+                ],
+                "head_entity": "Kings County, California",
+                "relation": "located in the administrative territorial entity",
+                "tail_entity": "California",
+                "evidences": [
+                    {
+                        "text": "Washington was born in Kings County, California, and debuted on television in 1997 on the episode \"A Reverend Runs Through It\" of the series \"Brooklyn South\".",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.4766024788381579,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "62a3284ddb22e8709734da59",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    142,
+                    156
+                ],
+                "head_entity": "Brooklyn South",
+                "relation": "cast member",
+                "tail_entity": "Washington",
+                "evidences": [
+                    {
+                        "text": "Washington was born in Kings County, California, and debuted on television in 1997 on the episode \"A Reverend Runs Through It\" of the series \"Brooklyn South\".",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.6561919886586202,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "6316e1be50a7de572bee6ff7",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    -102,
+                    -85
+                ],
+                "head_entity": "Jascha Washington",
+                "relation": "place of birth",
+                "tail_entity": "Kings County, California",
+                "evidences": [
+                    {
+                        "text": "Washington was born in Kings County, California, and debuted on television in 1997 on the episode \"A Reverend Runs Through It\" of the series \"Brooklyn South\".",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.6626652591263844,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            }
+        ],
+        [
+            {
                 "_id": "624a85f0c20df149ac24c59c",
                 "evidences": [
                     {
@@ -4742,6 +5484,70 @@
                 "evidences": [
                     {
                         "text": "Washington presented a project The Final at After Dark Horrorfest 2010.\n"
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "_id": "62a328f2db22e8709734da74",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    43,
+                    52
+                ],
+                "head_entity": "Frenemies",
+                "relation": "cast member",
+                "tail_entity": "Kendall",
+                "evidences": [
+                    {
+                        "text": "His most recent appearance was Kendall in \"Frenemies\".\n",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.23775567484268811,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "_id": "62a328fddb22e8709734da7d",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    8,
+                    11
+                ],
+                "head_entity": "his",
+                "relation": "employer",
+                "tail_entity": "television",
+                "evidences": [
+                    {
+                        "text": "Besides his over a dozen films he has worked in television movies, shows, music videos and even appeared in a handful of commercials.\n",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.43506657327129594,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "62a3290adb22e8709734da83",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    31,
+                    33
+                ],
+                "head_entity": "he",
+                "relation": "employer",
+                "tail_entity": "television",
+                "evidences": [
+                    {
+                        "text": "Besides his over a dozen films he has worked in television movies, shows, music videos and even appeared in a handful of commercials.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.21407297329690422,
+                        "filtered": true,
+                        "ts": "2022-09-27"
                     }
                 ]
             }
@@ -4804,6 +5610,188 @@
                 "evidences": [
                     {
                         "text": "Washington was founded in 1817 on the site of the former Autauga Indian town of Atagi and named in honor of George Washington."
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "_id": "62cf58bc7b89832b107c9fc4",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    64,
+                    74
+                ],
+                "head_entity": "Washington",
+                "relation": "located in the administrative territorial entity",
+                "tail_entity": "Autauga County",
+                "evidences": [
+                    {
+                        "text": "On November 22, 1819, the Alabama territorial legislature chose Washington as the county seat of Autauga County, which it remained until 1830.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.3054364871858768,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "62cf58c17b89832b107c9fc8",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    119,
+                    121
+                ],
+                "head_entity": "it",
+                "relation": "located in the administrative territorial entity",
+                "tail_entity": "Autauga County",
+                "evidences": [
+                    {
+                        "text": "On November 22, 1819, the Alabama territorial legislature chose Washington as the county seat of Autauga County, which it remained until 1830.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.21994445985163102,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "62cf58bc7b89832b107c9fc6",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    64,
+                    74
+                ],
+                "head_entity": "Washington",
+                "relation": "capital of",
+                "tail_entity": "Autauga County",
+                "evidences": [
+                    {
+                        "text": "On November 22, 1819, the Alabama territorial legislature chose Washington as the county seat of Autauga County, which it remained until 1830.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.8243566359381691,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "62cf58bc7b89832b107c9fc7",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    64,
+                    74
+                ],
+                "head_entity": "Washington",
+                "relation": "capital",
+                "tail_entity": "Autauga County",
+                "evidences": [
+                    {
+                        "text": "On November 22, 1819, the Alabama territorial legislature chose Washington as the county seat of Autauga County, which it remained until 1830.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.207473244172364,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "62cf58c17b89832b107c9fcb",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    119,
+                    121
+                ],
+                "head_entity": "it",
+                "relation": "capital of",
+                "tail_entity": "Autauga County",
+                "evidences": [
+                    {
+                        "text": "On November 22, 1819, the Alabama territorial legislature chose Washington as the county seat of Autauga County, which it remained until 1830.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.2620957619479909,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "62cf58c17b89832b107c9fcc",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    119,
+                    121
+                ],
+                "head_entity": "it",
+                "relation": "capital",
+                "tail_entity": "Autauga County",
+                "evidences": [
+                    {
+                        "text": "On November 22, 1819, the Alabama territorial legislature chose Washington as the county seat of Autauga County, which it remained until 1830.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.26586806780900074,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "630a77ffa6447e358d9e5f2f",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    -291,
+                    -272
+                ],
+                "head_entity": "Washington, Alabama",
+                "relation": "located in the administrative territorial entity",
+                "tail_entity": "Autauga County",
+                "evidences": [
+                    {
+                        "text": "On November 22, 1819, the Alabama territorial legislature chose Washington as the county seat of Autauga County, which it remained until 1830.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.393837799092429,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "630a77ffa6447e358d9e5f32",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    -291,
+                    -272
+                ],
+                "head_entity": "Washington, Alabama",
+                "relation": "capital of",
+                "tail_entity": "Autauga County",
+                "evidences": [
+                    {
+                        "text": "On November 22, 1819, the Alabama territorial legislature chose Washington as the county seat of Autauga County, which it remained until 1830.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.4472150009507776,
+                        "filtered": true,
+                        "ts": "2022-09-27"
+                    }
+                ]
+            },
+            {
+                "_id": "630a77ffa6447e358d9e5f33",
+                "head_linked_entity": "????",
+                "headSpan": [
+                    -291,
+                    -272
+                ],
+                "head_entity": "Washington, Alabama",
+                "relation": "capital",
+                "tail_entity": "Autauga County",
+                "evidences": [
+                    {
+                        "text": "On November 22, 1819, the Alabama territorial legislature chose Washington as the county seat of Autauga County, which it remained until 1830.",
+                        "extractor": "GLM-2B/P-tuning",
+                        "confidence": 0.18995769627874592,
+                        "filtered": true,
+                        "ts": "2022-09-27"
                     }
                 ]
             }
