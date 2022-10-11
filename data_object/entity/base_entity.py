@@ -20,8 +20,8 @@ class BaseEntity(Document):
 
     meta = {
         "abstract": True,
-        "indexes": [
-            "source",
-            "sourceId"
-        ]
+        # "indexes": [
+        #     "source",
+        #     "sourceId"
+        # ]
     }
