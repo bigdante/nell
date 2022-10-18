@@ -9,7 +9,7 @@ class BaseRelation(Document):
     text = StringField(required=True)
     description = StringField()
     alias = ListField(StringField())
-
+    examples = ListField(StringField())
     # source
     source = StringField(required=True)
     sourceId = StringField()

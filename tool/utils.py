@@ -11,11 +11,31 @@ from flask import jsonify
 from mongoengine.queryset.visitor import Q
 from tqdm import tqdm
 import re
+
+def get_params(request):
+    '''
+        get parameters
+    '''
+    params = {}
+    if request.method == 'POST':
+        message = eval(request.data)
+        params["query_name"] = message['query_name'] if "query_name" in message.keys() else ""
+        params["relation"] = message['relation'] if "relation" in message.keys() else ""
+        params["page"] = message['page'] if "page" in message.keys() else 1
+        params["size"] = message['size'] if "size" in message.keys() else 50
+        params["refresh"] = message['refresh'] if "refresh" in message.keys() else False
+        params["id"] = message['id'] if "id" in message.keys() else ""
+        params["text"] = message['text'] if "text" in message.keys() else ""
+    else:
+        return " 'it's not a POST operation! \n"
+    return params
+
 def precess_db_data(db_document,need_span=True):
     '''
         formate the result for browser 
     '''
     output = {}
+    output['new'] = random.randint(0,1)
     output['_id'] = str(db_document.id)
     output["head_linked_entity"] = "????"
     if need_span:
@@ -23,9 +43,11 @@ def precess_db_data(db_document,need_span=True):
         output['headSpan'] = indexs.tolist()
         output['head_entity'] = db_document.head
     else:
-        output['head_entity'] = re.sub(r"[^a-zA-Z.!?]+", r" ", db_document.head.lower())
+        # output['head_entity'] = re.sub(r"[^a-zA-Z.!?]+", r" ", db_document.head.lower())
+        output['head_entity'] =db_document.head
     output['relation'] = db_document.relationLabel
     output['tail_entity'] = db_document.tail
+
     output['evidences'] = [{
         "text": db_document.evidenceText,
         "extractor": "GLM-2B/P-tuning",
@@ -40,7 +62,7 @@ def precess_db_data(db_document,need_span=True):
 
 def call_es(text, index="page"):
     '''
-        get the page or entity related
+        get the page or entity
     '''
     headers = {'Content-Type': 'application/json'}
     if index == 'page':
@@ -61,9 +83,7 @@ def call_es(text, index="page"):
     elif index == 'entity':
         entity_names = [r['_source']['text'] for r in s_r]
         entity_ids = [r['_id'] for r in s_r]
-        # print(s_r)
         result_triples=get_entity_net(entity_ids,entity_names)
-
     return result_triples
 
 
@@ -144,18 +164,16 @@ def get_pages(page_ids):
                         }]
                     else:
                         continue
-                # if result:
                 result_list.append(result)
                 
         result_triples[str(page_id)] = result_list
     print("search page done....consume time:{:.2f}s".format(time.time()-start))
-    save_result_json(result_triples,"./data/page.json")
     return result_triples
 
 
 def get_entity_net(entity_ids,entity_names):
     '''
-        根据关键词，获得head和tail为关键词的所有的信息
+        根据id，获得head和tail为关键词的所有的信息
          result = {
             word1:[{"head":x,"tail":b,"relationLabel":c},{},...],
             word2:[{},{},...]
@@ -197,14 +215,41 @@ def get_entity_net(entity_ids,entity_names):
                 edeges.append(relation)
             if for_root not in edeges and entity != for_root["target"]:
                 edeges.append(for_root)
-            tables.append(precess_db_data(triple,False))
+            
+            r = precess_db_data(triple,need_span=False)
+            hrt = r["head_entity"] + r["relation"] + r["tail_entity"]
+            flag = 1
+            for index, triple in enumerate(tables):
+                t = triple["head_entity"] + triple["relation"] + triple["tail_entity"]
+                if t == hrt:
+                    flag = 0
+                    tables[index]["evidences"].append(r["evidences"][0])
+                    break
+            if flag == 1 :
+                tables.append(r)
+            # tables.append(precess_db_data(triple,False))
         if nodes and edeges:    
             result[entity]={
                 "nodes":nodes,
                 "edges":edeges,
                 "tables":tables
             }
-    save_result_json(result,"./data/search.json")
     print("search entity done....consume time:{:.2f}s".format(time.time()-start))
 
+    return result
+
+
+def get_relation(query_id):
+    '''
+        通过relation获取到三元组的信息。
+    '''
+    result = []
+    start = time.time()
+    for index, triple in enumerate(TripleFact.objects(relation=query_id)):
+        result.append(precess_db_data(triple,need_span=False))
+        # 后期的优化
+        if index > 1000:
+            break
+    save_result_json(result,"./data/relation.json")
+    print("relation search done, consume time {:.2f}s".format(time.time()-start))
     return result
