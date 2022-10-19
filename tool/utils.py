@@ -165,7 +165,6 @@ def get_pages(page_ids):
                     else:
                         continue
                 result_list.append(result)
-                
         result_triples[str(page_id)] = result_list
     print("search page done....consume time:{:.2f}s".format(time.time()-start))
     return result_triples
@@ -174,10 +173,6 @@ def get_pages(page_ids):
 def get_entity_net(entity_ids,entity_names):
     '''
         根据id，获得head和tail为关键词的所有的信息
-         result = {
-            word1:[{"head":x,"tail":b,"relationLabel":c},{},...],
-            word2:[{},{},...]
-        }
     '''
     start = time.time()
     result = {}
@@ -185,11 +180,7 @@ def get_entity_net(entity_ids,entity_names):
         nodes = [{"id":entity,"label":entity,"root":True}]
         edeges= []
         tables=[]
-        # for triple in TripleFact.objects(Q(head=entity)):
-        # for triple in TripleFact.objects(Q(head=entity) | Q(tail=entity)):
         for triple in TripleFact.objects(Q(headWikipediaEntity=ObjectId(id))):
-            # if not triple.head.lower()==entity.lower():
-            #     continue
             head = {
                     "id":triple.head,
                     "label":triple.head
@@ -227,7 +218,6 @@ def get_entity_net(entity_ids,entity_names):
                     break
             if flag == 1 :
                 tables.append(r)
-            # tables.append(precess_db_data(triple,False))
         if nodes and edeges:    
             result[entity]={
                 "nodes":nodes,
@@ -235,7 +225,6 @@ def get_entity_net(entity_ids,entity_names):
                 "tables":tables
             }
     print("search entity done....consume time:{:.2f}s".format(time.time()-start))
-
     return result
 
 
