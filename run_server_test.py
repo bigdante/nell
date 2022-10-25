@@ -21,6 +21,7 @@ for r in BaseRelation.objects():
         relation2id[r.text] = r.id
 # 记录总的条数，防止每次计算
 total = WikidataEntity.objects.count()
+# total = 999
 @app.route('/latest', methods=['GET'])
 def latest():
     '''
@@ -29,7 +30,7 @@ def latest():
     result = []
     start = time.time()
     for index, triple in enumerate(TripleFact.objects[:100]):
-        result.append(precess_db_data(triple))
+        result.append(precess_db_data(triple,need_span=True))
     return output_process(result)
 
 
@@ -55,8 +56,8 @@ def show_pps():
         '''
             if search for relation message
         '''
-        query_id = relation2id[params["query_name"]]
-        results = get_relation(query_id)
+        # query_id = relation2id[params["query_name"]]
+        results = get_relation(params["query_name"])
     else:
         results = get_page_entity(params["query_name"])
     return output_process(results)
@@ -70,7 +71,7 @@ def show_entity():
     pages = math.ceil(total /params["size"])
     # 刷新和分页
     if params["refresh"]:
-        page = random.randint(0,pages)
+        params["page"] = random.randint(0,pages)
     start_item = params["size"]*(params["page"]-1)
     end_item = params["size"]*params["page"]
     for index, entity in enumerate(WikidataEntity.objects[start_item:end_item]):
@@ -89,7 +90,7 @@ def entity_detail():
     start = time.time()
     params = get_params(request)
     for _, triple in enumerate(TripleFact.objects(headWikidataEntity=ObjectId(params["id"]))):
-        r = precess_db_data(triple,need_span=False)
+        r = precess_db_data(triple,need_span=True)
         r["head_unified"] = params["text"]
         hrt = r["head_entity"] + r["relation"] + r["tail_entity"]
         flag = 1

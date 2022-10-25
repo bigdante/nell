@@ -41,10 +41,10 @@ def precess_db_data(db_document,need_span=True):
     if need_span:
         indexs = np.asarray(db_document.headSpan)-BaseSentence.objects.get(id=db_document.evidence.id).charSpan[0]
         output['headSpan'] = indexs.tolist()
-        output['head_entity'] = db_document.head
-    else:
+        # output['head_entity'] = db_document.head
+    # else:
         # output['head_entity'] = re.sub(r"[^a-zA-Z.!?]+", r" ", db_document.head.lower())
-        output['head_entity'] =db_document.head
+    output['head_entity'] =db_document.head
     output['relation'] = db_document.relationLabel
     output['tail_entity'] = db_document.tail
 
@@ -53,7 +53,9 @@ def precess_db_data(db_document,need_span=True):
         "extractor": "GLM-2B/P-tuning",
         "confidence": random.random(),
         "filtered": True,
-        "ts": str(datetime.date.today())
+        "ts": str(datetime.date.today()),
+        "headSpan" :indexs.tolist() if need_span else "",
+        "evidenceID":str(db_document.evidence.id)
     }]
 
 
@@ -228,16 +230,16 @@ def get_entity_net(entity_ids,entity_names):
     return result
 
 
-def get_relation(query_id):
+def get_relation(query_name):
     '''
         通过relation获取到三元组的信息。
     '''
     result = []
     start = time.time()
-    for index, triple in enumerate(TripleFact.objects(relation=query_id)):
-        result.append(precess_db_data(triple,need_span=False))
+    for index, triple in enumerate(TripleFact.objects(relationLabel=query_name)):
+        result.append(precess_db_data(triple,need_span=True))
         # 后期的优化
-        if index > 1000:
+        if index > 100:
             break
     save_result_json(result,"./data/relation.json")
     print("relation search done, consume time {:.2f}s".format(time.time()-start))
