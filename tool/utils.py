@@ -58,7 +58,6 @@ def precess_db_data(db_document,need_span=True):
         "evidenceID":str(db_document.evidence.id)
     }]
 
-
     return output
 
 
@@ -238,7 +237,7 @@ def get_relation(query_name):
     start = time.time()
     for index, triple in enumerate(TripleFact.objects(relationLabel=query_name)):
         result.append(precess_db_data(triple,need_span=True))
-        # 后期的优化
+        # TODO:现在只返回了100条，如何后期的优化
         if index > 100:
             break
     save_result_json(result,"./data/relation.json")
