@@ -26,6 +26,7 @@ def get_params(request):
         params["refresh"] = message['refresh'] if "refresh" in message.keys() else False
         params["id"] = message['id'] if "id" in message.keys() else ""
         params["text"] = message['text'] if "text" in message.keys() else ""
+        params["type"] = message['type'] if "type" in message.keys() else ""
     else:
         return " 'it's not a POST operation! \n"
     return params

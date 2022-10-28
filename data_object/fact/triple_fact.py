@@ -25,6 +25,9 @@ class TripleFact(BaseFact):
     headWikidataEntity = StringField(required=True)
     headWikipediaEntity = StringField(required=True)
 
+    thumb_up = IntField(required=True)
+    thumb_down = IntField(required=True)
+    
     meta = {
         # "collection": "triple_fact_new",
         "collection": "triple_fact_v0_1_20220919",

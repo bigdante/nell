@@ -106,5 +106,23 @@ def entity_detail():
     return output_process(result)
 
 
+@app.route('/thumb_up_down', methods=['GET','POST'])
+def up_dowm():
+    start = time.time()
+    params = get_params(request)
+    triple = TripleFact.objects(id=ObjectId(params["id"]))
+    if params["type"] == "up":
+        triple.thumb_up += 1
+    elif params["type"] == "down":
+        triple.thumb_down += 1
+    triple.save()
+    if result:
+        print("record done, consume time {:.2f}s".format(time.time()-start)) 
+        return {"success":True}
+    else:
+        print("record failed, consume time {:.2f}s".format(time.time()-start)) 
+        return {"success":False}
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8841, debug=True)
