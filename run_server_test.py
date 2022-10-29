@@ -107,7 +107,7 @@ def entity_detail():
 
 
 @app.route('/thumb_up_down', methods=['GET','POST'])
-def up_dowm():
+def up_down():
     start = time.time()
     params = get_params(request)
     triple = TripleFact.objects(id=ObjectId(params["id"]))
