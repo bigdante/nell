@@ -14,11 +14,11 @@ app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 CORS(app, supports_credentials=True)
 
-# 记录relation和id的对应，后续还需要进行加速
-relation2id = {}
-for r in BaseRelation.objects():
-    if r.text not in relation2id.keys():
-        relation2id[r.text] = r.id
+# # 记录relation和id的对应，后续还需要进行加速
+# relation2id = {}
+# for r in BaseRelation.objects():
+#     if r.text not in relation2id.keys():
+#         relation2id[r.text] = r.id
 # 记录总的条数，防止每次计算
 total = WikidataEntity.objects.count()
 # total = 999
@@ -115,7 +115,7 @@ def up_dowm():
         triple.thumb_up += 1
     elif params["type"] == "down":
         triple.thumb_down += 1
-    triple.save()
+    result = triple.save()
     if result:
         print("record done, consume time {:.2f}s".format(time.time()-start)) 
         return {"success":True}
