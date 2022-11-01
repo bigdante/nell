@@ -36,7 +36,7 @@ def precess_db_data(db_document,need_span=True):
         formate the result for browser 
     '''
     output = {}
-    output['new'] = random.randint(0,1)
+    output['new'] = db_document.isNewFact
     output['_id'] = str(db_document.id)
     output["head_linked_entity"] = "????"
     if need_span:
@@ -50,6 +50,8 @@ def precess_db_data(db_document,need_span=True):
     output['tail_entity'] = db_document.tail
 
     output['evidences'] = [{
+        "up": db_document.upVote,
+        "down": db_document.downVote,
         "text": db_document.evidenceText,
         "extractor": "GLM-2B/P-tuning",
         "confidence": random.random(),

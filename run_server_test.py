@@ -110,11 +110,12 @@ def entity_detail():
 def up_down():
     start = time.time()
     params = get_params(request)
-    triple = TripleFact.objects(id=ObjectId(params["id"]))
+
+    triple = TripleFact.objects.get(id=ObjectId(params["id"]))
     if params["type"] == "up":
-        triple.thumb_up += 1
+        triple.upVote += 1
     elif params["type"] == "down":
-        triple.thumb_down += 1
+        triple.downVote += 1
     result = triple.save()
     if result:
         print("record done, consume time {:.2f}s".format(time.time()-start)) 
@@ -123,6 +124,16 @@ def up_down():
         print("record failed, consume time {:.2f}s".format(time.time()-start)) 
         return {"success":False}
 
+# @app.route('/init', methods=['GET','POST'])
+# def init():
+#     for t in TripleFact.objects():
+#         t.upVote = 0
+#         t.downVote = 0
+#         t.isNewFact = 0
+#         t.save()
+#         # print(t.id,"save done ")
+#     print("init done")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8841, debug=True)
+    print("hhh")

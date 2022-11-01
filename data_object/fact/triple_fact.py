@@ -18,16 +18,16 @@ class TripleFact(BaseFact):
     evidence = GenericReferenceField(required=True)
     # evidence = ReferenceField(required=True)
     evidenceText = StringField()
-
     verification = DictField()
     
-    is_from_abstract = StringField(required=True)
-    headWikidataEntity = StringField(required=True)
-    headWikipediaEntity = StringField(required=True)
+    # is_from_abstract = StringField(required=True)
 
-    thumb_up = IntField(required=True)
-    thumb_down = IntField(required=True)
-    
+    headWikidataEntity = ReferenceField('WikidataEntity')
+    headWikipediaEntity = ReferenceField('WikipediaEntity')
+    upVote = IntField()
+    downVote = IntField()
+    isNewFact = IntField()
+
     meta = {
         # "collection": "triple_fact_new",
         "collection": "triple_fact_v0_1_20220919",

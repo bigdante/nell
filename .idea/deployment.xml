@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="xll@166.111.5.162:23333 password">
     <serverData>
-      <paths name="liuxiao@106">
+      <paths name="nell">
         <serverdata>
           <mappings>
-            <mapping deploy="/home/liuxiao/BAAI/nell/NELL_backend" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/home/xll/nell" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="xll@166.111.5.162:23333 password">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/pycharm_project_154" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>
     </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>
